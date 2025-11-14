@@ -1,0 +1,21 @@
+networks:
+  shared:
+    name: homelab_shared
+
+services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    restart: unless-stopped
+    command: --cleanup --interval 300
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - shared
+    healthcheck:
+      test: ["CMD", "watchtower", "--version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+
