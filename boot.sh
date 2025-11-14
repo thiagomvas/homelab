@@ -13,6 +13,7 @@ EOF
 
 echo ""
 echo "=== Starting infrastructure ==="
+bash "infra/pre-start.sh"
 docker compose -f infra/docker-compose.yml up -d
 
 echo ""
