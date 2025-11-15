@@ -4,7 +4,7 @@ networks:
 services:
   jellyfin:
     image: jellyfin/jellyfin
-    container_name: jellyfin
+    container_name: media-jellyfin
     user: 1000:1000
     ports:
       - 8096:8096/tcp
@@ -15,6 +15,6 @@ services:
       - type: bind
         source: ./music/
         target: /music
-    restart: 'unless-stopped'
+    restart: "unless-stopped"
     extra_hosts:
-      - 'host.docker.internal:host-gateway'
+      - "host.docker.internal:host-gateway"
