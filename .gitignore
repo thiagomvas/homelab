@@ -1,3 +1,6 @@
+*.env
+
+# ========== Media Files ==========
 # Audio
 *.mp3
 *.aac

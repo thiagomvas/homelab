@@ -1,0 +1,104 @@
+- name: Home
+  head-widgets:
+    - type: server-stats
+      servers:
+        - type: local
+          name: Services 
+  # Optionally, if you only have a single page you can hide the desktop navigation for a cleaner look
+  # hide-desktop-navigation: true
+  columns:
+    - size: small
+      widgets:
+        - type: calendar
+          first-day-of-week: monday
+
+        - type: rss
+          limit: 10
+          collapse-after: 3
+          cache: 12h
+          feeds:
+            - url: https://selfh.st/rss/
+              title: selfh.st
+        - type: docker-containers
+
+    - size: full
+      widgets:
+        - type: bookmarks
+          groups:
+            - title: Tools
+              links:
+                - title: Trilium
+                  url: https://notes.thiagomvas.dev
+                - title: Kanban
+                  url: https://kanban.thiagomvas.dev
+                - title: Archi Steam Farm
+                  url: https://asf.thiagomvas.dev
+
+            - title: Softeam
+              color: 205 84 40
+
+            - title: JetSales
+              color: 129 100 67
+              links:
+                - title: Jira
+                  url: https://jetsalesbrasil.atlassian.net/jira/software/c/projects/CHAT/boards/23
+                - title: Confluence
+                  url: https://jetsalesbrasil.atlassian.net/wiki/spaces/jetgo/overview?homepageId=3145729
+                - title: Grafana
+                  url: https://grafana.jetsalesbrasil.com.br/
+                - title: Datadog
+                  url: https://app.datadoghq.com/apm/home
+                        
+        - type: group
+          widgets:
+            - type: hacker-news
+            - type: lobsters
+
+        - type: group
+          widgets:
+            - type: reddit
+              subreddit: technology
+              show-thumbnails: true
+            - type: reddit
+              subreddit: selfhosted
+              show-thumbnails: true
+            - type: reddit
+              subreddit: homelab
+              show-thumbnails: true
+            - type: reddit
+              subreddit: dotnet 
+              show-thumbnails: true
+
+    - size: small
+      widgets:
+        - type: weather
+          location: Aracaju, Sergipe, Brazil 
+          units: metric # alternatively "imperial"
+          hour-format: 24h # alternatively "24h"
+          # Optionally hide the location from being displayed in the widget
+          # hide-location: true
+
+        - type: markets
+          markets:
+            - symbol: SPY
+              name: S&P 500
+            - symbol: BTC-USD
+              name: Bitcoin
+            - symbol: NVDA
+              name: NVIDIA
+            - symbol: AAPL
+              name: Apple
+            - symbol: MSFT
+              name: Microsoft
+
+        - type: releases
+          cache: 1d
+          # Without authentication the Github API allows for up to 60 requests per hour. You can create a
+          # read-only token from your Github account settings and use it here to increase the limit.
+          # token: ...
+          repositories:
+            - glanceapp/glance
+            - go-gitea/gitea
+            - immich-app/immich
+            - syncthing/syncthing
+
