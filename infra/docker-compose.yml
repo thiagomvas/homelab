@@ -1,5 +1,6 @@
 networks:
   shared:
+    external: true
   authentik:
 
 services:
