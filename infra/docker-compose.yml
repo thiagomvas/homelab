@@ -20,7 +20,7 @@ services:
       - ./letsencrypt:/etc/letsencrypt
 
   watchtower:
-    image: containrrr/watchtower
+    image: containrrr/watchtower:latest
     container_name: watchtower
     restart: unless-stopped
     command: --cleanup --interval 300
