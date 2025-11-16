@@ -1,8 +1,6 @@
 networks:
   shared:
-    name: homelab_shared
   authentik:
-    name: homelab_authentik
 
 services:
   npm:
