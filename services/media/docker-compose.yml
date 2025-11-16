@@ -3,6 +3,8 @@ networks:
     external: true
 services:
   jellyfin:
+    networks:
+      - shared
     image: jellyfin/jellyfin
     container_name: media-jellyfin
     user: 1000:1000
@@ -20,7 +22,10 @@ services:
       - "host.docker.internal:host-gateway"
 
   metube:
+    container_name: media-metube
     image: alexta69/metube
+    networks:
+      - shared
     ports:
       - 8082:8081
     volumes:
