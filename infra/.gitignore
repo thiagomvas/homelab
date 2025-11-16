@@ -1,0 +1,6 @@
+certs/
+custom-templates/
+data/
+media/
+postgres/
+redis/
