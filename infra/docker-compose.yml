@@ -58,7 +58,7 @@ services:
       - authentik
 
   redis:
-    container-name: auth-redis
+    container_name: auth-redis
     command: --save 60 1 --loglevel warning
     healthcheck:
       interval: 30s
