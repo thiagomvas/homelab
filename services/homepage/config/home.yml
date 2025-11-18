@@ -27,12 +27,13 @@
       groups:
       - title: Tools
         links:
-        - title: Trilium
-          url: https://notes.thiagomvas.dev
-        - title: Kanban
+        - title: Planka
           url: https://kanban.thiagomvas.dev
-        - title: Archi Steam Farm
-          url: https://asf.thiagomvas.dev
+        - title: Jellyfin
+          url: https://jellyfin.thiagomvas.dev
+        - title: Immich
+          url: https://immich.thiagomvas.dev
+
 
       - title: Softeam
         color: 205 84 40
