@@ -1,4 +1,5 @@
 networks:
+  planka:
   shared:
     external: true
 
@@ -8,6 +9,7 @@ services:
     image: ghcr.io/plankanban/planka:2.0.0-rc.4 
     networks:
     - shared
+    - planka
     restart: on-failure
     volumes:
       - favicons:/app/public/favicons
@@ -118,7 +120,9 @@ services:
         condition: service_healthy
 
   postgres:
-    container_name: planka-db
+    container_name: planka-db 
+    networks:
+    - planka
     image: postgres:16-alpine
     restart: on-failure
     volumes:
