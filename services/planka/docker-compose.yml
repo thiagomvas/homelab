@@ -4,6 +4,7 @@ networks:
 
 services:
   planka:
+    container_name: planka
     image: ghcr.io/plankanban/planka:2.0.0-rc.4
     restart: on-failure
     volumes:
@@ -115,6 +116,7 @@ services:
         condition: service_healthy
 
   postgres:
+    container_name: planka-db
     image: postgres:16-alpine
     restart: on-failure
     volumes:
