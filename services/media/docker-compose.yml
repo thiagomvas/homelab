@@ -18,6 +18,24 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+  lidarr:
+    container_name: media-lidarr
+    image: lscr.io/linuxserver/lidarr
+    networks:
+      - shared
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+    volumes:
+      - ./lidarr/config:/config
+      - ./music:/music
+      - ./downloads:/downloads
+    ports:
+      - 8686:8686
+    restart: unless-stopped
+
+
   metube:
     container_name: media-metube
     image: alexta69/metube
