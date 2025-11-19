@@ -34,23 +34,3 @@ services:
     ports:
       - 8686:8686
     restart: unless-stopped
-
-  lidatube:
-    image: thewicklowwolf/lidatube:latest
-    container_name: media-lidatube
-    volumes:
-      - ./lidatube/config:/lidatube/config
-      - ./music:/lidatube/downloads
-      - /etc/localtime:/etc/localtime:ro
-    networks:
-      - shared
-    restart: unless-stopped
-
-  metube:
-    container_name: media-metube
-    image: alexta69/metube
-    networks:
-      - shared
-    volumes:
-      - ./downloads:/downloads
-    restart: unless-stopped

@@ -1,0 +1,17 @@
+networks:
+  shared:
+    external: true
+
+services:
+  lidatube:
+    image: thewicklowwolf/lidatube:latest
+    container_name: media-lidatube
+    volumes:
+      - ./lidatube/config:/lidatube/config
+      - ./music:/lidatube/downloads
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 5000:5000
+    networks:
+      - shared
+    restart: unless-stopped
