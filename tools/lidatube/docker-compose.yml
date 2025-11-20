@@ -6,12 +6,14 @@ services:
   lidatube:
     image: thewicklowwolf/lidatube:latest
     container_name: media-lidatube
+    user: "1000:1000"  
     volumes:
       - ./lidatube/config:/lidatube/config
-      - ../services/media/music:/lidatube/downloads
+      - ../../services/media/music:/lidatube/downloads
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "${HOST_IP}:5000:5000"
     networks:
       - shared
     restart: unless-stopped
+
