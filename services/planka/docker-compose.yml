@@ -21,6 +21,8 @@ services:
     # tmpfs:
     #   - /app/.tmp:mode=770,uid=1000,gid=1000
     env_file: .env
+    ports: 
+      - "${HOST_IP}:1337:1337"
     environment:
       - BASE_URL=https://kanban.thiagomvas.dev
       - DATABASE_URL=postgresql://postgres@postgres/planka
