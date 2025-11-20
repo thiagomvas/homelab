@@ -1,0 +1,61 @@
+services:
+  romm:
+    image: rommapp/romm:latest
+    container_name: romm
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWD: ${DB_PASSWD}
+      ROMM_AUTH_SECRET_KEY: ${ROMM_AUTH_SECRET_KEY}
+
+      IGDB_CLIENT_ID: ${IGDB_CLIENT_ID}
+      IGDB_CLIENT_SECRET: ${IGDB_CLIENT_SECRET}
+      SCREENSCRAPER_USER: ${SCREENSCRAPER_USER}
+      SCREENSCRAPER_PASSWORD: ${SCREENSCRAPER_PASSWORD}
+      RETROACHIEVEMENTS_USERNAME: ${RETROACHIEVEMENTS_USERNAME}
+      RETROACHIEVEMENTS_API_KEY: ${RETROACHIEVEMENTS_API_KEY}
+      MOBYGAMES_API_KEY: ${MOBYGAMES_API_KEY}
+      STEAMGRIDDB_API_KEY: ${STEAMGRIDDB_API_KEY}
+      PLAYMATCH_API_ENABLED: ${PLAYMATCH_API_ENABLED}
+      HASHEOUS_API_ENABLED: ${HASHEOUS_API_ENABLED}
+      LAUNCHBOX_API_ENABLED: ${LAUNCHBOX_API_ENABLED}
+
+    volumes:
+      - /opt/romm/resources:/romm/resources
+      - /opt/romm/redis-data:/redis-data
+      - /mnt/storage/romlibrary:/romm/library
+      - /opt/romm/assets:/romm/assets
+      - /opt/romm/config:/romm/config
+
+    ports:
+      - "${HOST_IP}:80:8080"   
+
+    depends_on:
+      romm-db:
+        condition: service_healthy
+        restart: true
+
+  romm-db:
+    image: mariadb:latest
+    container_name: romm-db
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - /opt/romm/mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      start_period: 30s
+      start_interval: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 5
