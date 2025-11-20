@@ -16,7 +16,7 @@ services:
         source: ./music/
         target: /music
     ports:
-      - "127.0.0.1:8096:8096"   # localhost-only
+      - "${HOST_IP}:8096:8096"   
     restart: "unless-stopped"
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -35,5 +35,5 @@ services:
       - ./music:/music
       - ./downloads:/downloads
     ports:
-      - "127.0.0.1:8686:8686"   # localhost-only
+      - "${HOST_IP}:8686:8686"   
     restart: unless-stopped
