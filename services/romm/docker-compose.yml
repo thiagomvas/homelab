@@ -25,6 +25,7 @@ services:
       LAUNCHBOX_API_ENABLED: ${LAUNCHBOX_API_ENABLED}
 
     volumes:
+      - /opt/romm/config/config.yml:/romm/config/config.yml
       - /opt/romm/resources:/romm/resources
       - /opt/romm/redis-data:/redis-data
       - /mnt/storage/romlibrary:/romm/library
