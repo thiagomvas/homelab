@@ -32,7 +32,7 @@ services:
       - /opt/romm/config:/romm/config
 
     ports:
-      - "${HOST_IP}:80:8080"   
+      - "${HOST_IP}:2525:8080"   
 
     depends_on:
       romm-db:
