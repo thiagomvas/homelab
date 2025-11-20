@@ -8,7 +8,7 @@ services:
     container_name: media-lidatube
     user: "1000:1000"  
     volumes:
-      - ./lidatube/config:/lidatube/config
+      - ./lidatube:/lidatube
       - ../../services/media/music:/lidatube/downloads
       - /etc/localtime:/etc/localtime:ro
     ports:
