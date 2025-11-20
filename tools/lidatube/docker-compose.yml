@@ -11,7 +11,7 @@ services:
       - ../services/media/music:/lidatube/downloads
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - 5000:5000
+      - "${HOST_IP}:5000:5000"
     networks:
       - shared
     restart: unless-stopped
