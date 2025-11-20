@@ -11,6 +11,8 @@ _/  |_|  |__ |__|____     ____   ____   ________  __         |  |__   ____   ___
            \/        \//_____/              \/                    \/             \/     \/          \/    \/ 
 EOF
 
+export HOST_IP=192.168.100.130
+
 echo ""
 echo "=== Starting infrastructure ==="
 bash "infra/pre-start.sh"
