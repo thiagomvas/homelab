@@ -8,6 +8,8 @@ networks:
 services:
   immich-server:
     container_name: immich_server
+    ports:
+      - "${HOST_IP}:2283:2283"
     image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
     volumes:
       - ${UPLOAD_LOCATION}:/data
