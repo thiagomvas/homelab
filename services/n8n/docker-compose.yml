@@ -8,10 +8,10 @@ services:
     container_name: n8n
     restart: unless-stopped
     environment:
-      N8N_HOST: n8n.softeam.com.br
+      N8N_HOST: n8n.thiagomvas.dev
       N8N_PORT: 5678
       N8N_PROTOCOL: https
-      WEBHOOK_URL: https://n8n.softeam.com.br/
+      WEBHOOK_URL: https://n8n.thiagomvas.dev/
       GENERIC_TIMEZONE: America/Sao_Paulo
 
       DB_TYPE: postgresdb
