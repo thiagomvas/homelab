@@ -5,3 +5,4 @@ media/
 postgres/
 redis/
 letsencrypt/
+kuma-data/

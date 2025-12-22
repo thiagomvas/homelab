@@ -20,10 +20,9 @@ services:
     restart: "unless-stopped"
     extra_hosts:
       - "host.docker.internal:host-gateway"
-
   lidarr:
     container_name: media-lidarr
-    image: lscr.io/linuxserver/lidarr
+    image: ghcr.io/hotio/lidarr:pr-plugins
     networks:
       - shared
     environment:
@@ -34,6 +33,9 @@ services:
       - ./lidarr/config:/config
       - ./music:/music
       - ./downloads:/downloads
+      - /usr/bin/ffmpeg:/bin/ffmpeg:ro
+      - /usr/bin/ffprobe:/bin/ffprobe:ro
     ports:
-      - "${HOST_IP}:8686:8686"   
+      - "${HOST_IP}:8686:8686"
     restart: unless-stopped
+

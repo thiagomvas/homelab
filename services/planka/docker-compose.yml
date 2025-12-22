@@ -24,7 +24,7 @@ services:
     ports: 
       - "${HOST_IP}:1337:1337"
     environment:
-      - BASE_URL=https://kanban.thiagomvas.dev
+      - BASE_URL=https://planka.thiagomvas.dev
       - DATABASE_URL=postgresql://postgres@postgres/planka
 
       # Optionally store the database password in secrets:
