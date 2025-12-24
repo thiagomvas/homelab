@@ -1,6 +1,7 @@
 networks:
   shared:
     external: true
+  romm:
 
 services:
   romm:
@@ -11,6 +12,7 @@ services:
       - "${HOST_IP}:2525:8080"   
     networks:
       - shared
+      - romm
     env_file:
       - .env
     environment:
@@ -47,11 +49,14 @@ services:
       - "traefik.http.routers.romm.entrypoints=websecure"
       - "traefik.http.services.romm.loadbalancer.server.port=8080"
       - "traefik.http.routers.romm.tls=true"
+      - "traefik.http.routers.romm.tls.certresolver=https"
 
   romm-db:
     image: mariadb:latest
     container_name: romm-db
     restart: unless-stopped
+    networks:
+      - romm
     env_file:
       - .env
     environment:
