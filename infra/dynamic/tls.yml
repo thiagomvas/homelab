@@ -1,0 +1,4 @@
+tls:
+  certificates:
+    - certFile: /certs/thiagomvas.dev.crt
+      keyFile: /certs/thiagomvas.dev.key

@@ -32,7 +32,12 @@
         - title: Jellyfin
           url: https://jellyfin.thiagomvas.dev
         - title: Immich
-          url: https://immich.thiagomvas.dev
+          url: https://immich.tail625939.ts.net
+        - title: VS Code Server
+          url: http://192.168.100.130:1234/?folder=/home/tmv-cloud
+        - title: SiYuan
+          url: https://notes.thiagomvas.dev
+          
 
 
       - title: Softeam
