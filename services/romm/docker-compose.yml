@@ -11,7 +11,6 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWD: ${DB_PASSWD}
       ROMM_AUTH_SECRET_KEY: ${ROMM_AUTH_SECRET_KEY}
-
       IGDB_CLIENT_ID: ${IGDB_CLIENT_ID}
       IGDB_CLIENT_SECRET: ${IGDB_CLIENT_SECRET}
       SCREENSCRAPER_USER: ${SCREENSCRAPER_USER}
@@ -23,7 +22,6 @@ services:
       PLAYMATCH_API_ENABLED: ${PLAYMATCH_API_ENABLED}
       HASHEOUS_API_ENABLED: ${HASHEOUS_API_ENABLED}
       LAUNCHBOX_API_ENABLED: ${LAUNCHBOX_API_ENABLED}
-
     volumes:
       - ./config.yml:/romm/config/config.yml
       - ./resources:/romm/resources
@@ -31,14 +29,18 @@ services:
       - ./romlibrary:/romm/library
       - ./assets:/romm/assets
       - ./config:/romm/config
-
     ports:
       - "${HOST_IP}:2525:8080"   
-
     depends_on:
       romm-db:
         condition: service_healthy
         restart: true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.romm.rule=Host(`romm.thiagomvas.dev`)"
+      - "traefik.http.routers.romm.entrypoints=websecure"
+      - "traefik.http.services.romm.loadbalancer.server.port=2525"
+      - "traefik.http.routers.romm.tls=true"
 
   romm-db:
     image: mariadb:latest

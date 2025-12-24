@@ -1,12 +1,3 @@
-certs/
-custom-templates/
-data/
-media/
-postgres/
-redis/
-letsencrypt/
-kuma-data/
-
 # Terraform state files
 *.tfstate
 *.tfstate.backup
