@@ -56,3 +56,48 @@ resource "cloudflare_dns_record" "glance" {
   ttl     = 300
   proxied = false
 }
+
+resource "cloudflare_dns_record" "code-server" {
+  zone_id = var.cloudflare_zone_id
+  name    = "code-server"
+  type    = "A"
+  content   = var.target_ip
+  ttl     = 300
+  proxied = false
+}
+
+resource "cloudflare_dns_record" "jellyfin" {
+  zone_id = var.cloudflare_zone_id
+  name    = "jellyfin"
+  type    = "A"
+  content   = var.target_ip
+  ttl     = 300
+  proxied = false
+}
+
+resource "cloudflare_dns_record" "lidarr" {
+  zone_id = var.cloudflare_zone_id
+  name    = "lidarr"
+  type    = "A"
+  content   = var.target_ip
+  ttl     = 300
+  proxied = false
+}
+
+resource "cloudflare_dns_record" "lidatube" {
+  zone_id = var.cloudflare_zone_id
+  name    = "lidatube"
+  type    = "A"
+  content   = var.target_ip
+  ttl     = 300
+  proxied = false
+}
+
+resource "cloudflare_dns_record" "n8n" {
+  zone_id = var.cloudflare_zone_id
+  name    = "n8n"
+  type    = "A"
+  content   = var.target_ip
+  ttl     = 300
+  proxied = false
+}

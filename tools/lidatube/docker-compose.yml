@@ -13,5 +13,11 @@ services:
       - "${HOST_IP}:5000:5000"
     networks:
       - shared
-    restart: unless-stopped
+    restart: unless-stopped    
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.lidatube.rule=Host(`lidatube.thiagomvas.dev`)"
+      - "traefik.http.routers.lidatube.entrypoints=websecure"
+      - "traefik.http.services.lidatube.loadbalancer.server.port=5000"
+      - "traefik.http.routers.lidatube.tls=true"
 

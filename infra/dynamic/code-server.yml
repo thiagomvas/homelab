@@ -1,0 +1,14 @@
+http:
+  routers:
+    host-app:
+      rule: "Host(`code-server.thiagomvas.dev`)"
+      entryPoints:
+        - websecure
+      tls: true
+      service: host-app
+
+  services:
+    host-app:
+      loadBalancer:
+        servers:
+          - url: "http://host.docker.internal:1234"

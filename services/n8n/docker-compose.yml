@@ -30,6 +30,12 @@ services:
       - ./n8n_data:/home/node/.n8n
     depends_on:
       - postgres
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.n8n.rule=Host(`n8n.thiagomvas.dev`)"
+      - "traefik.http.routers.n8n.entrypoints=websecure"
+      - "traefik.http.services.n8n.loadbalancer.server.port=5678"
+      - "traefik.http.routers.n8n.tls=true"
   postgres:
     image: postgres:16
     container_name: n8n-postgres
