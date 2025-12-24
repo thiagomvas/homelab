@@ -25,6 +25,13 @@ services:
     networks:
       - shared
       - immich
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.immich.rule=Host(`immich.thiagomvas.dev`)"
+      - "traefik.http.routers.immich.entrypoints=websecure"
+      - "traefik.http.services.immich.loadbalancer.server.port=2283"
+      - "traefik.http.routers.immich.tls=true"
+
 
   redis:
     container_name: immich_redis

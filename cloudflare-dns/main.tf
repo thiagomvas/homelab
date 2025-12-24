@@ -38,3 +38,21 @@ resource "cloudflare_dns_record" "romm" {
   ttl     = 300
   proxied = false
 }
+
+
+resource "cloudflare_dns_record" "immich" {
+  zone_id = var.cloudflare_zone_id
+  name    = "immich"
+  type    = "A"
+  content   = var.target_ip
+  ttl     = 300
+  proxied = false
+}
+resource "cloudflare_dns_record" "glance" {
+  zone_id = var.cloudflare_zone_id
+  name    = "glance"
+  type    = "A"
+  content   = var.target_ip
+  ttl     = 300
+  proxied = false
+}

@@ -13,6 +13,12 @@ services:
       - shared
     ports:
       - "${HOST_IP}:10000:8080"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.glance.rule=Host(`glance.thiagomvas.dev`)"
+      - "traefik.http.routers.glance.entrypoints=websecure"
+      - "traefik.http.services.glance.loadbalancer.server.port=8080"
+      - "traefik.http.routers.glance.tls=true"
 
 networks:
   shared:

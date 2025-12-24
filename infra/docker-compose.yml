@@ -4,7 +4,6 @@ networks:
   authentik:
 
 services:
-
   traefik:
     image: "traefik:v3.4"
     container_name: "traefik"
@@ -18,11 +17,12 @@ services:
       - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
-      - "--providers.docker.network=proxy"
+      - "--providers.docker.network=shared"
       - "--providers.file.directory=/etc/traefik/dynamic"
       - "--entryPoints.web.address=:80"
       - "--entryPoints.websecure.address=:443"
       - "--entryPoints.websecure.http.tls=true"
+      - "--accesslog=true"
     ports:
       - "80:80"
       - "443:443"

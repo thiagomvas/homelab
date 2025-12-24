@@ -1,8 +1,16 @@
+networks:
+  shared:
+    external: true
+
 services:
   romm:
     image: rommapp/romm:latest
     container_name: romm
     restart: unless-stopped
+    ports:
+      - "${HOST_IP}:2525:8080"   
+    networks:
+      - shared
     env_file:
       - .env
     environment:
@@ -29,8 +37,6 @@ services:
       - ./romlibrary:/romm/library
       - ./assets:/romm/assets
       - ./config:/romm/config
-    ports:
-      - "${HOST_IP}:2525:8080"   
     depends_on:
       romm-db:
         condition: service_healthy
@@ -39,7 +45,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.romm.rule=Host(`romm.thiagomvas.dev`)"
       - "traefik.http.routers.romm.entrypoints=websecure"
-      - "traefik.http.services.romm.loadbalancer.server.port=2525"
+      - "traefik.http.services.romm.loadbalancer.server.port=8080"
       - "traefik.http.routers.romm.tls=true"
 
   romm-db:
