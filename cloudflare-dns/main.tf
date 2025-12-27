@@ -101,3 +101,11 @@ resource "cloudflare_dns_record" "n8n" {
   ttl     = 300
   proxied = false
 }
+resource "cloudflare_dns_record" "paperless" {
+  zone_id = var.cloudflare_zone_id
+  name    = "paperless"
+  type    = "A"
+  content   = var.target_ip
+  ttl     = 300
+  proxied = false
+}
